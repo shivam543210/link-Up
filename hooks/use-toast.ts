@@ -80,6 +80,7 @@ export const reducer = (state: State, action: Action): State => {
       return {
         ...state,
         toasts: [action.toast, ...state.toasts].slice(0, TOAST_LIMIT),
+
       }
 
     case "UPDATE_TOAST":
@@ -93,8 +94,7 @@ export const reducer = (state: State, action: Action): State => {
     case "DISMISS_TOAST": {
       const { toastId } = action
 
-      // ! Side effects ! - This could be extracted into a dismissToast() action,
-      // but I'll keep it here for simplicity
+
       if (toastId) {
         addToRemoveQueue(toastId)
       } else {
